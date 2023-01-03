@@ -136,7 +136,7 @@
 \title[Netgen Meets Firedrake]{Netgen Meets Firedrake} % short title for footer
 \author%
 {%
-	\sc{P. Farrell} *, \sc{S. Zampini}$\;\dagger$, \underline{\sc{U. Zerbinati}} *\\
+	\sc{P. E. Farrell} *, \sc{S. Zampini}$\;\dagger$, \underline{\sc{U. Zerbinati}} *\\
 }
 \institute%
 {%
@@ -147,7 +147,7 @@
 	\;\textit{King Abdullah University of Science and Technology}
 }
 
-\date[Firedrake 2023]{Firedrake User Meeting, Exeter, 4th -- 6th of January 2023} % short date for footer
+\date[Firedrake 2023]{Firedrake User Meeting, Exeter, 6th of January 2023} % short date for footer
 
 
 
@@ -165,9 +165,9 @@
 		$\newline$
 		\begin{itemize}
 			\item[\color{oxfordblue}$\blacktriangleright$] Geometrical modelling,
-			\item[\color{oxfordblue}$\blacktriangleright$] Meshing using an advancing front method,
-			\item[\color{purple}$\blacktriangleright$] Discretising a Partial Differential Equation (\textbf{PDE}),
-			\item[\color{purple}$\blacktriangleright$] Solving the linear or nonlinear system arsing from the discretisation.
+			\item[\color{oxfordblue}$\blacktriangleright$] Meshing,
+			\item[\color{purple}$\blacktriangleright$] Discretising a PDE,
+			\item[\color{purple}$\blacktriangleright$] Solving the linear or nonlinear system.
 		\end{itemize}
 		We aim to allow the Firedrake user to do all the steps above described in a single script.
 	\end{frame}
@@ -177,7 +177,7 @@
 		NetGen is an advancing front 2D/3D-mesh generator, with many interesting features. Among the most important:
 		$\newline$
 		\begin{itemize}
-			\item[\color{oxfordblue}$\blacktriangleright$] Python wrapping (through PyBind11),
+			\item[\color{oxfordblue}$\blacktriangleright$] Python wrapping (through pybind11),
 			\item[\color{oxfordblue}$\blacktriangleright$] Multiple ways of describing the geometry to be meshed, i.e. its builtin \textbf{Constructive Solid Geometry} (\textbf{CSG}) and the \textbf{Open Cascade Technology} (\textbf{OCCT}) geometry kernel,
 			\item[\color{oxfordblue}$\blacktriangleright$] Supports mesh refinement (also anisotropic mesh refinement).
 		\end{itemize}
@@ -195,7 +195,7 @@
 				If you are using an external PETSc installation, such installation should be updated to include commit \texttt{654059db}.
 			\end{alertblock}
 			\begin{alertblock}{NetGen}
-				If installing from scratch use the NetGen repository from the Firdrake project GitHub.
+				If installing from scratch, use the NetGen fork from the Firdrake project GitHub.
 			\end{alertblock}
 	\end{frame}
 	\begin{frame}
@@ -213,7 +213,7 @@
 			\includegraphics[scale=0.23]{Figures/Poisson2D}
 		\end{figure}
 	\end{frame}
-		\begin{frame}
+	\begin{frame}
 		\frametitle{Getting Started -- CSG 2D}
 		$\newline$
 		\lstinputlisting[language=Python]{Codes/CSG2DMesh.py}
@@ -229,12 +229,26 @@
 		\end{figure}
 	\end{frame}
 	\begin{frame}
+		\frametitle{Getting Started -- CSG 3D}
+		\begin{minipage}{0.7\textwidth}
+			$\newline$
+			\lstinputlisting[language=Python]{Codes/CSG3DMesh.py}
+		\end{minipage}
+		\begin{minipage}{0.25\textwidth}
+			\vspace{-0.3cm}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.2]{Figures/CSG3DMesh}
+			\end{figure}
+		\end{minipage}
+	\end{frame}
+	\begin{frame}
 			\frametitle{The Open Cascade Technology Kernel}
 			$\newline$
 			\begin{itemize}
 				\item[\color{oxfordblue}$\blacktriangleright$] Basic OCCT objects can be used in NetGen such as: \texttt{Box}, \texttt{Cylinder}, \texttt{Point}, \texttt{Segment} and \texttt{ArcOfCircle}.
 				\item[\color{oxfordblue}$\blacktriangleright$] The \texttt{fuse},\texttt{cut} and \texttt{common} operations between OCCT objects have been wrapped in NetGen.
-				\item [\color{oxfordblue}$\blacktriangleright$] Transformation operations such as \texttt{Move} and \texttt{Rotate} have also been wrapped into NetGen
+				\item [\color{oxfordblue}$\blacktriangleright$] Transformation operations such as \texttt{Move} and \texttt{Rotate} have also been wrapped into NetGen.
 			\end{itemize}
 	\end{frame}
 	\begin{frame}
@@ -273,23 +287,29 @@
 			\vspace{-0.3cm}
 			\begin{figure}
 				\centering
-				\includegraphics[scale=0.2]{Figures/OCCBottleBody}
+				\includegraphics[scale=0.25]{Figures/OCCBottle}
 			\end{figure}
 		\end{minipage}
 	\end{frame}
 	\begin{frame}
-		\frametitle{The OCCT Kernel -- The Flask Example: III}
+		\frametitle{The OCCT Kernel -- Linear Elasticity: I}
 		$\newline$
-		\lstinputlisting[language=Python,firstline=29,lastline=43]{Codes/OCCBottle.py}
+		\lstinputlisting[language=Python,firstline=0, lastline=14]{Codes/OCCSolid.py}
 	\end{frame}
 	\begin{frame}
-		\frametitle{The OCCT Kernel -- The Flask Example: III}
+		\frametitle{The OCCT Kernel -- Linear Elasticity: II}
+		$\newline$
+		\lstinputlisting[language=Python,firstline=15, lastline=29]{Codes/OCCSolid.py}
+	\end{frame}
+	\begin{frame}
+		\frametitle{The OCCT Kernel -- Linear Elasticity: III}
+		$\newline$
 		\begin{figure}
 			\centering
-			\includegraphics[scale=0.24]{Figures/OCCBottle}
-			\qquad
-			\qquad
-			\includegraphics[scale=0.28]{Figures/OCCStrein}
+			\includegraphics[scale=0.19]{Figures/OCCSolidMesh}
+			\\
+			\vspace{1cm}
+			\qquad\qquad\includegraphics[scale=0.2]{Figures/OCCSolid}
 		\end{figure}
 	\end{frame}
 	\begin{frame}
