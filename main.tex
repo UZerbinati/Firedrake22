@@ -160,16 +160,23 @@
 	%
 	\begin{frame}
 		\frametitle{Solving A Partial Differential Equation}
-		
-		When solving a partial differential equation the following macro steps can be identified:
-		$\newline$
-		\begin{itemize}
-			\item[\color{oxfordblue}$\blacktriangleright$] Geometrical modelling,
-			\item[\color{oxfordblue}$\blacktriangleright$] Meshing,
-			\item[\color{purple}$\blacktriangleright$] Discretising a PDE,
-			\item[\color{purple}$\blacktriangleright$] Solving the linear or nonlinear system.
-		\end{itemize}
-		We aim to allow the Firedrake user to do all the steps above described in a single script.
+		\begin{minipage}{0.75\textwidth}
+			When solving a partial differential equation the following macro steps can be identified:
+			$\newline$
+			\begin{itemize}
+				\item[\color{oxfordblue}$\blacktriangleright$] Geometrical modelling,
+				\item[\color{oxfordblue}$\blacktriangleright$] Meshing,
+				\item[\color{purple}$\blacktriangleright$] Discretising a PDE,
+				\item[\color{purple}$\blacktriangleright$] Solving the linear or nonlinear system.
+			\end{itemize}
+			We aim to allow the Firedrake user to do all the steps above described in a single script.
+		\end{minipage}
+		\begin{minipage}{0.2\textwidth}
+			\vspace{-0.3cm}
+			\begin{figure}
+				\includegraphics[scale=0.2]{Figures/QR}
+			\end{figure}
+		\end{minipage}
 	\end{frame}
 	\begin{frame}
 		\frametitle{Why NetGen?}
@@ -313,6 +320,25 @@
 		\end{figure}
 	\end{frame}
 	\begin{frame}
+		\frametitle{The OCCT Kernel -- Multigrid: I}
+		$\newline$
+		\lstinputlisting[language=Python,firstline=2,lastline=17]{Codes/Multigrid.py}
+	\end{frame}
+	\begin{frame}
+		\frametitle{The OCCT Kernel -- Multigrid: II}
+		\begin{minipage}{0.8\textwidth}
+			$\newline$
+			\lstinputlisting[language=Python,firstline=18,lastline=29]{Codes/Multigrid.py}
+		\end{minipage}
+		\begin{minipage}{0.1\textwidth}
+			\vspace{-0.3cm}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.2]{Figures/Coil}
+			\end{figure}
+		\end{minipage}
+	\end{frame}
+	\begin{frame}
 		\frametitle{Mesh Refinement -- Adaptive Mesh Refinement: I}
 		\begin{minipage}{0.75\textwidth}
 			$\newline$
@@ -347,6 +373,7 @@
 		$\newline$
 		\begin{itemize}
 			\item[\color{oxfordblue}$\blacktriangleright$] Mesh \textbf{hierarchy awareness}, using Firedrake \texttt{HierarchyBase} class.
+			\item[\color{oxfordblue}$\blacktriangleright$] Make the implementation works in \textbf{complex} arithmetic.
 			\item[\color{oxfordblue}$\blacktriangleright$] Support for \textbf{anisotropic} mesh refinement, using NetGen \texttt{ZRefinement} and \texttt{HPRefinement} methods.
 			\item[\color{oxfordblue}$\blacktriangleright$] Support for NetGen \textbf{high order} mesh in Firedrake.
 			\item[\color{oxfordblue}$\blacktriangleright$] Support for MFEM \textbf{GLVIS} mesh and solution live display, thanks to PETSc-GLVIS interface.
