@@ -23,8 +23,8 @@ a,L = dot(grad(u), grad(v))*dx, 1*v*dx
 bcsI=DirichletBC(V,1,ngmsh.GetBCIDs("I"))
 bcsO=DirichletBC(V,0.,ngmsh.GetBCIDs("O"))
 u = Function(V)
-parameters = {"ksp_type": "preonly","pc_type": "mg",
+parameters = {"ksp_type": "preonly", "pc_type": "mg",
    "pc_mg_type": "full", "mg_levels_ksp_type": "chebyshev",
    "mg_levels_ksp_max_it": 2,"mg_levels_pc_type": "jacobi"}
-solve(a==L,u,bcs=[bcsI,bcsO],solver_parameters=par)
+solve(a==L, u, bcs=[bcsI, bcsO],solver_parameters=par)
 File("VTK/Coil.pvd").write(u)
