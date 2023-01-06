@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{listings}
+\usepackage{animate}
 \beamertemplatenavigationsymbolsempty
 
 %% Title slide formatting %%
@@ -246,6 +247,20 @@
 			\begin{figure}
 				\centering
 				\includegraphics[scale=0.2]{Figures/CSG3DMesh}
+			\end{figure}
+		\end{minipage}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Getting Started -- CSG Surfaces}
+		\begin{minipage}{0.7\textwidth}
+			$\newline$
+			\lstinputlisting[language=Python,lastline=10]{Codes/Surf.py}
+		\end{minipage}
+		\begin{minipage}{0.25\textwidth}
+			\vspace{-0.3cm}
+			\begin{figure}
+				\centering
+				\scalebox{0.1}{\animategraphics[loop,autoplay]{12}{Animation/Surf.}{0000}{0259}}
 			\end{figure}
 		\end{minipage}
 	\end{frame}
