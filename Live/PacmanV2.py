@@ -39,7 +39,6 @@ def Solve(msh,labels):
     vr, vi = Asc.getVecs()
     with uh.dat.vec_wo as vr:
         lam = E.getEigenpair(0, vr, vi)
-    File("sol.pvd").write(uh)
     return (lam, uh, V)
 
 def Mark(msh, uh, lam):
@@ -99,6 +98,7 @@ else:
 msh = Mesh(ngmsh)
 labels = comm.bcast(labels, root=0)
 for i in range(max_iterations):
+    print("Refinement Level {}".format(i))
     lam, uh, V = Solve(msh,labels)
     mark = Mark(msh, uh, lam)
     msh = msh.Refine(mark)
